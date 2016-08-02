@@ -8,10 +8,8 @@
 
 import Foundation
 import CoreData
-import UIKit
 
 class Post: NSManagedObject {
     
-    @NSManaged var title: String?
-    
+    @NSManaged var title: String!
 }

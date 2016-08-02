@@ -45,7 +45,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    @IBAction func addTapped (sender: UIButton!) {
+    @IBAction func addTapped (sender: AnyObject!) {
             if let title = postField.text where title != "" {
                 
                 let app = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -62,39 +62,40 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 } catch {
                     print("Could not save recipe")
                 }
-                
-            tableView.reloadData()
+              fetchAndSetResults()
+                tableView.reloadData()
+                postField.text = ""
         }
     
     }
     
-    func deleteTapped(sender: UITapGestureRecognizer) {
-        func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-            switch editingStyle {
-            case .Delete:
-                // remove the deleted item from the model
-                let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                let context:NSManagedObjectContext = appDel.managedObjectContext
-                context.deleteObject(posts[indexPath.row] )
-                posts.removeAtIndex(indexPath.row)
-                do {
-                    try context.save()
-                } catch _ {
-                }
-                
-                // remove the deleted item from the `UITableView`
-                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            default:
-                return
-            }
-        }
-        
-    }
     
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        switch editingStyle {
+        case .Delete:
+            // remove the deleted item from the model
+            let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let context:NSManagedObjectContext = appDel.managedObjectContext
+            context.deleteObject(posts[indexPath.row] )
+            posts.removeAtIndex(indexPath.row)
+            do {
+                try context.save()
+            } catch _ {
+            }
+            
+            // remove the deleted item from the `UITableView`
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        default:
+            return
+        }
+    }
+    
+
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -121,5 +122,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func onPostsLoaded(notif: AnyObject) {
         tableView.reloadData()
     }
+    
 }
 

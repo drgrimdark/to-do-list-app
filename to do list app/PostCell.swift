@@ -12,22 +12,31 @@ import CoreData
 class PostCell: UITableViewCell {
 
     @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var deleteImage: UIImageView!
+    @IBOutlet weak var doneImage: UIImageView!
     
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.deleteTapped(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(PostCell.doneTapped(_:)))
         tap.numberOfTapsRequired = 1
-        deleteImage.addGestureRecognizer(tap)
-        deleteImage.userInteractionEnabled = true
+        doneImage.addGestureRecognizer(tap)
+        doneImage.userInteractionEnabled = true
 
         
         }
+    func doneTapped(sender: UITapGestureRecognizer!) {
+        if doneImage.image == UIImage(named: "notDone") {
+            doneImage.image = UIImage(named: "done")
+            
+        }else if doneImage.image == UIImage(named: "done"){
+            doneImage.image = UIImage(named: "notDone")
+        }
+    }
     
     func configureCell(post: Post) {
         titleLbl.text = post.title
-        
+        doneImage.image = UIImage(named: "notDone")
         
         
     }
