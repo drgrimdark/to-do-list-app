@@ -23,22 +23,46 @@ class PostCell: UITableViewCell {
         doneImage.addGestureRecognizer(tap)
         doneImage.userInteractionEnabled = true
 
-        
         }
-    func doneTapped(sender: UITapGestureRecognizer!) {
-        if doneImage.image == UIImage(named: "notDone") {
-            doneImage.image = UIImage(named: "done")
-            
-        }else if doneImage.image == UIImage(named: "done"){
+        
+    func configureCell(post: Post) {
+        titleLbl.text = post.title
+        if post.done == false {
             doneImage.image = UIImage(named: "notDone")
+        }else if post.done == true {
+            doneImage.image = UIImage(named: "done")
         }
     }
     
-    func configureCell(post: Post) {
-        titleLbl.text = post.title
-        doneImage.image = UIImage(named: "notDone")
-        
-        
-    }
+    func doneTapped(sender: UITapGestureRecognizer!) {
+        let app = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = app.managedObjectContext
+        let entity = NSEntityDescription.entityForName("Post", inManagedObjectContext: context)!
+        let post = Post(entity: entity, insertIntoManagedObjectContext: context)
 
+        
+        if post.done == false {
+            doneImage.image = UIImage(named: "done")
+            post.done = true
+            do {
+                try context.save()
+            } catch {
+                print("Could not save recipe")
+            }
+
+            
+        }else if post.done == true {
+            doneImage.image = UIImage(named: "notDone")
+            post.done = false
+            do {
+                try context.save()
+            } catch {
+                print("Could not save recipe")
+            }
+
+        }
+        
+    
+
+    }
 }

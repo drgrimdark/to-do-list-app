@@ -54,6 +54,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let post = Post(entity: entity, insertIntoManagedObjectContext: context)
                 
                 post.title = title
+                post.done = false
                 
                 context.insertObject(post)
                 
@@ -122,6 +123,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func onPostsLoaded(notif: AnyObject) {
         tableView.reloadData()
     }
+    
+    
+    @IBAction func deleteAllTapped(sender: AnyObject) {
+        deleteAllData("Post")
+        fetchAndSetResults()
+        tableView.reloadData()
+    }
+    
+    func deleteAllData(entity: String)
+    {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do
+        {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            for managedObject in results
+            {
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.deleteObject(managedObjectData)
+            }
+        } catch let error as NSError {
+            print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
+        }
+    }
+    
+    
+    
+    
     
 }
 

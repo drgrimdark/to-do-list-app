@@ -17,8 +17,9 @@
 		CE53C27F1D47F1C60070876B /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53C27C1D47F1C60070876B /* MaterialButton.swift */; };
 		CE53C2801D47F1C60070876B /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53C27D1D47F1C60070876B /* MaterialTextField.swift */; };
 		CE53C2831D47F2030070876B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53C2821D47F2030070876B /* Constants.swift */; };
-		CE53C2A61D49684E0070876B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53C2A51D49684E0070876B /* Post.swift */; };
 		CE53C2A81D4969DD0070876B /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53C2A71D4969DD0070876B /* PostCell.swift */; };
+		CEC4E34A1D59CD9C00908205 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4E3481D59CD9C00908205 /* Post+CoreDataProperties.swift */; };
+		CEC4E34B1D59CD9C00908205 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4E3491D59CD9C00908205 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +35,9 @@
 		CE53C27C1D47F1C60070876B /* MaterialButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButton.swift; sourceTree = "<group>"; };
 		CE53C27D1D47F1C60070876B /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
 		CE53C2821D47F2030070876B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		CE53C2A51D49684E0070876B /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		CE53C2A71D4969DD0070876B /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		CEC4E3481D59CD9C00908205 /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Post+CoreDataProperties.swift"; path = "../Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CEC4E3491D59CD9C00908205 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = ../Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +87,8 @@
 		CE53C2571D47EA6E0070876B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CE53C2A51D49684E0070876B /* Post.swift */,
+				CEC4E3481D59CD9C00908205 /* Post+CoreDataProperties.swift */,
+				CEC4E3491D59CD9C00908205 /* Post.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -191,13 +194,14 @@
 			files = (
 				CE53C2801D47F1C60070876B /* MaterialTextField.swift in Sources */,
 				CE53C2451D47EA390070876B /* ViewController.swift in Sources */,
+				CEC4E34A1D59CD9C00908205 /* Post+CoreDataProperties.swift in Sources */,
 				CE53C2431D47EA390070876B /* AppDelegate.swift in Sources */,
-				CE53C2A61D49684E0070876B /* Post.swift in Sources */,
 				CE53C24B1D47EA390070876B /* to_do_list_app.xcdatamodeld in Sources */,
 				CE53C2A81D4969DD0070876B /* PostCell.swift in Sources */,
 				CE53C2831D47F2030070876B /* Constants.swift in Sources */,
 				CE53C27E1D47F1C60070876B /* MaterialView.swift in Sources */,
 				CE53C27F1D47F1C60070876B /* MaterialButton.swift in Sources */,
+				CEC4E34B1D59CD9C00908205 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
